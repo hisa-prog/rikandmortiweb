@@ -6,21 +6,24 @@ import {
     NameLocationsInBlock,
     TypeLocationsInBlock,
     DimensionLocationsInBlock,
-    RezidentsLocationsInBlock,
+    LocationBlock,
     Wrapper,
     Button,
-    NumOfCurrentPage
+    NumOfCurrentPage,
+    ButtonGoToPageOfEpisode
 
-} from '../components/layouts/index'
+} from '../../components/layouts/index'
 import banner from './../../public/RickAndMortyBackground.png'
 import axios from 'axios'
 import {useEffect, useState} from 'react'
+import { useRouter } from 'next/router'
 
 export default function Locations() {
 
     const [Locations, setLocations] = useState ([])
     const [maxPagesLocations, setMaxPagesLocations] = useState(0)
     const [pageLocations, setPageLocations] = useState(1)
+    const router = useRouter()
 
   useEffect(() => {
     async function  GetInfoCharacter (value: number) {
@@ -50,6 +53,10 @@ export default function Locations() {
     }
   }
 
+  const goToLocation = (locationId : string) => {
+    router.push(`/Locations/${locationId}`)
+  }
+
 
     return(
         <PageOfLocations>
@@ -57,18 +64,25 @@ export default function Locations() {
                 {Locations.map((item: any) => (
                     <BlockInfoLocations>
                         <InfoLocationsInBlock>
-                            <TypeLocationsInBlock>
-                                Type : {item.type}
+                            <LocationBlock>
+                                Type :
+                            </LocationBlock>
+                            <TypeLocationsInBlock style = {{ marginLeft : '65px', fontSize: '20px'}}>
+                                {item.type}
                             </TypeLocationsInBlock>
-                            <NameLocationsInBlock>
-                                Name of {item.type} : {item.name} 
+                            <LocationBlock>
+                                Name of {item.type} :
+                            </LocationBlock>
+                            <NameLocationsInBlock style = {{ marginLeft : '65px', fontSize: '20px'}}>
+                                {item.name} 
                             </NameLocationsInBlock>
-                            <DimensionLocationsInBlock>
-                                Dimension : {item.dimension}
+                            <LocationBlock>
+                                Dimension :
+                            </LocationBlock>
+                            <DimensionLocationsInBlock style = {{ marginLeft : '65px', fontSize: '20px'}}>
+                                {item.dimension}
                             </DimensionLocationsInBlock>
-                            <RezidentsLocationsInBlock>
-                                Residents : 
-                            </RezidentsLocationsInBlock>
+                            <ButtonGoToPageOfEpisode onClick={ () => goToLocation(item.id) }> Перейти </ButtonGoToPageOfEpisode>
                         </InfoLocationsInBlock>
                     </BlockInfoLocations>
                 ))}

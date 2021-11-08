@@ -11,18 +11,22 @@ import {
   StatusCharacterInBlock,
   StatusAndSpeciesCharacterInBlock,
   RowWithStatusAndSpeciesCharacterInBlock,
+  InformationOfLocationAnsEpisodeCharacterInBlock,
+  OriginAndLocationCharacterInBlock,
   Button,
   NumOfCurrentPage,
 
 } from "../components/layouts"
 import axios from 'axios'
 import {useEffect, useState} from 'react'
+import { useRouter } from "next/router"
 
 export default function Home() {
 
   const [Characters, setCharacters] = useState ([])
   const [maxPagesCharacters, setMaxPagesCharacters] = useState(0)
   const [pageCharacters, setPageCharacters] = useState(1)
+  const router = useRouter()
 
   useEffect(() => {
     async function  GetInfoCharacter (value: number) {
@@ -51,8 +55,11 @@ export default function Home() {
     }
   }
 
-
+  const goToLocation = (locationId : string) => {
+    router.push(`/Locations/${locationId}`)
+  }
   
+
   return (
     <HomePage>
         <ShowCasesCharacters>
@@ -60,9 +67,9 @@ export default function Home() {
           <BlockInfoCharacter>
             <ImageCharacterInBlock>
              <img src = {item.image}
-                width={225}
-                height={225}
-                style = {{borderRadius: "10px"}}
+                width={220}
+                height={220}
+                style = {{borderRadius: "10px 0px 0px 10px"}}
               />
             </ImageCharacterInBlock>
             <InfoCharacterInBlock>
@@ -76,6 +83,16 @@ export default function Home() {
                   {item.status} - {item.species}
                 </StatusAndSpeciesCharacterInBlock>
               </RowWithStatusAndSpeciesCharacterInBlock>
+              <InformationOfLocationAnsEpisodeCharacterInBlock>
+                Origin location:
+                <OriginAndLocationCharacterInBlock onClick={ () => goToLocation(item.id) }>
+                  {item.origin.name}
+                </OriginAndLocationCharacterInBlock>
+                First seen in:
+                <OriginAndLocationCharacterInBlock onClick={ () => goToLocation(item.id) }>
+                  {item.location.name}
+                </OriginAndLocationCharacterInBlock>
+              </InformationOfLocationAnsEpisodeCharacterInBlock>
             </InfoCharacterInBlock>
           </BlockInfoCharacter>
           ))}
@@ -93,3 +110,5 @@ export default function Home() {
     </HomePage>
   )
 }
+
+//ошибка в направлении на локации и эпизоды, id нужно брать именно эпизода, а не самого персонажа, проеб, ну да

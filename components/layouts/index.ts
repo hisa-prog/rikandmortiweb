@@ -73,8 +73,8 @@ export const ShowCasesCharacters = styled.div`
 `
 
 export const BlockInfoCharacter = styled.div`
-    width: 555px;
-    height: 225px;
+    width: 560px;
+    height: 220px;
     display: flex;
     border-radius: 10px;
     box-shadow: 0 0 10px #444;
@@ -82,14 +82,14 @@ export const BlockInfoCharacter = styled.div`
 `
 
 export const ImageCharacterInBlock = styled.div`
-    height: 225px;
-    width: 225px;
+    height: 220px;
+    width: 220px;
     border-radius: 10px;
 `
 
 export const InfoCharacterInBlock = styled.div`
     height: 225px;
-    width: 330px;
+    width: 340px;
     padding-bottom: 250px;
     padding-left: 5px;
     display: grid;
@@ -100,6 +100,7 @@ export const InfoCharacterInBlock = styled.div`
 export const NameCharacterInBlock = styled.h2`
     margin-top: 10px;
     margin-bottom: 5px;
+    margin-left: 10px;
     word-break: break-all;
     color: white;
 `
@@ -113,12 +114,27 @@ export const RowWithStatusAndSpeciesCharacterInBlock = styled.div`
 export const StatusCharacterInBlock = styled.div`
     height: 10px;
     width: 10px;
+    margin-left: 10px;
     border-radius: 50%;
     align-self: center;
     margin-right: 5px;
 `
 
 export const StatusAndSpeciesCharacterInBlock = styled.h3`
+    margin: 0;
+    word-break: break-all;
+    color: white; 
+`
+
+export const InformationOfLocationAnsEpisodeCharacterInBlock = styled.h4`
+    margin-top: 5px;
+    margin-left: 10px;
+    justify-content: space-around;
+    word-break: break-all;
+    color: rgb(158, 158, 158); 
+`
+
+export const OriginAndLocationCharacterInBlock = styled.h3`
     margin: 0;
     word-break: break-all;
     color: white; 
@@ -211,7 +227,7 @@ export const ShowCasesLocations = styled.div`
 
 export const BlockInfoLocations = styled.div`
     width: 555px;
-    height: 325px;
+    height: 290px;
     display: flex;
     border-radius: 10px;
     box-shadow: 0 0 10px #444;
@@ -219,7 +235,7 @@ export const BlockInfoLocations = styled.div`
 `
 
 export const InfoLocationsInBlock = styled.div`
-    height: 225px;
+    height: 290px;
     width: 100%;
     padding-bottom: 250px;
     padding-left: 5px;
@@ -270,8 +286,8 @@ export const ShowCasesEpisodes = styled.div`
 ` 
 
 export const BlockInfoEpisodes = styled.div`
-    width: 550px;
-    height: 355px;
+    width: 450px;
+    height: 255px;
     display: flex;
     border-radius: 10px;
     box-shadow: 0 0 10px #444;
@@ -282,33 +298,60 @@ export const InfoEpisodesInBlock = styled.div`
     height: 100%;
     width: 100%;
     padding-bottom: 250px;
-    padding-left: 5px;
     display: grid;
     grid-template-rows: 1fr 1fr;
     overflow: hidden;
 `
 
-export const InfoAboutEpisode = styled.h1`
-  margin-top: 10px;
+export const EpisodeBlock = styled.h2`
+  margin: 0;
+  word-break: break-all;
+  color: gray; 
+`
+
+export const InfoAboutEpisode = styled.h3`
   margin-bottom: 5px;
   word-break: break-all;
+  margin: 0;
+  margin-left: 100px;
+  font-size: 20px;
   color: white;
 `
 
 export const NameOfEpisode = styled.h2`
   margin: 0;
+  margin-left: 100px;
+  font-size: 20px;
   word-break: break-all;
   color: white;
 `
 
 export const DateOfEpisode = styled.h3`
-  margin: auto;
+  margin: 0;
+  margin-left: 100px;
+  font-size: 20px;
   word-break: break-all;
   color: white;
 `
-
-export const CharactersOfEpisode = styled.h4`
-  word-break: break-all;
-  color: white;
+export const ButtonGoToPageOfEpisode = styled.button`
+    width: 100px;
+    height: 30px;
+    background-color: rgb(47, 50, 56);
+    color: white;
+    margin: 20px;
+    font: normal 17px arial;
+    border-radius: 7px;
+    box-shadow: 0 0 10px #444;
+    word-break: break-all;
 `
 
+export const PageOfEpisode = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+`
+
+export const LocationBlock = styled.h2`
+  margin: 0;
+  word-break: break-all;
+  color: gray; 
+`
