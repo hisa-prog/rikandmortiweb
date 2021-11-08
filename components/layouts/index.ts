@@ -6,6 +6,7 @@ export const HomePage = styled.div`
     min-width: 100vw;
     background-color: rgb(36, 40, 47);
 `
+
 export const HeaderHomePage = styled.div`
     min-height: 65px;
     display: flex;
@@ -14,6 +15,7 @@ export const HeaderHomePage = styled.div`
     padding-right: 25px;
     background-color: white;
 `
+
 export const HeaderTitleHomePage = styled.div`
     width: 100%;
     text-align: center;
@@ -78,6 +80,7 @@ export const BlockInfoCharacter = styled.div`
     box-shadow: 0 0 10px #444;
     background-color: rgb(47, 50, 56);
 `
+
 export const ImageCharacterInBlock = styled.div`
     height: 225px;
     width: 225px;
@@ -94,19 +97,28 @@ export const InfoCharacterInBlock = styled.div`
     overflow: hidden;
 `
 
-export const NameAndStatusCharacterInBlock = styled.h2`
+export const NameCharacterInBlock = styled.h2`
     margin-top: 10px;
     margin-bottom: 5px;
     word-break: break-all;
     color: white;
 `
 
+export const RowWithStatusAndSpeciesCharacterInBlock = styled.div`
+    height: 27px;
+    width: 325px;
+    display: flex;
+`
+
 export const StatusCharacterInBlock = styled.div`
     height: 10px;
     width: 10px;
+    border-radius: 50%;
+    align-self: center;
+    margin-right: 5px;
 `
 
-export const SpeciesAndTypeCharacterInBlock = styled.h3`
+export const StatusAndSpeciesCharacterInBlock = styled.h3`
     margin: 0;
     word-break: break-all;
     color: white; 

@@ -7,9 +7,10 @@ import {
   BlockInfoCharacter,
   ImageCharacterInBlock,
   InfoCharacterInBlock,
-  NameAndStatusCharacterInBlock,
+  NameCharacterInBlock,
   StatusCharacterInBlock,
-  SpeciesAndTypeCharacterInBlock,
+  StatusAndSpeciesCharacterInBlock,
+  RowWithStatusAndSpeciesCharacterInBlock,
   Button,
   NumOfCurrentPage,
 
@@ -65,13 +66,16 @@ export default function Home() {
               />
             </ImageCharacterInBlock>
             <InfoCharacterInBlock>
-              <NameAndStatusCharacterInBlock>
-                {item.name} : {item.status}
-              </NameAndStatusCharacterInBlock>
-              <SpeciesAndTypeCharacterInBlock>
-                {item.species} : 
-                {item.type}
-              </SpeciesAndTypeCharacterInBlock>
+              <NameCharacterInBlock>
+                {item.name}
+              </NameCharacterInBlock>
+              <RowWithStatusAndSpeciesCharacterInBlock>
+                <StatusCharacterInBlock style={{backgroundColor: item.status === 'Alive' ? 'Lime' : item.status === 'Dead' ? 'red' : 'gray'}}>
+                </StatusCharacterInBlock>
+                <StatusAndSpeciesCharacterInBlock>
+                  {item.status} - {item.species}
+                </StatusAndSpeciesCharacterInBlock>
+              </RowWithStatusAndSpeciesCharacterInBlock>
             </InfoCharacterInBlock>
           </BlockInfoCharacter>
           ))}
@@ -89,5 +93,3 @@ export default function Home() {
     </HomePage>
   )
 }
-
-//{maxPagesCharacters.map(() => ())}
