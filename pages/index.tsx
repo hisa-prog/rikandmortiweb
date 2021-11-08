@@ -1,63 +1,59 @@
 import {
   HomePage,
-  HeaderHomePage,
-  HeaderTitleHomePage,
-  TitleHomePage,
   Wrapper,
+  Pagination,
+  ButtonPagination,
   ShowCasesCharacters,
   BlockInfoCharacter,
   ImageCharacterInBlock,
   InfoCharacterInBlock,
-  NameCharacterInBlock,
+  NameAndStatusCharacterInBlock,
   StatusCharacterInBlock,
-  SpeciesCharacterInBlock,
-  Button
+  SpeciesAndTypeCharacterInBlock,
+  Button,
+  NumOfCurrentPage,
+
 } from "../components/layouts"
-import Image from 'next/image'
-import logo from '../../rikandmortiweb/public/icons/RickAndMortiLogo.png'
 import axios from 'axios'
 import {useEffect, useState} from 'react'
 
 export default function Home() {
 
   const [Characters, setCharacters] = useState ([])
+  const [maxPagesCharacters, setMaxPagesCharacters] = useState(0)
   const [pageCharacters, setPageCharacters] = useState(1)
 
   useEffect(() => {
     async function  GetInfoCharacter (value: number) {
       let data = await axios.post('/api/GetInfoCharacters', {Page: value})
       setCharacters(data.data.data.results)
-      console.log(data.data.data.results)
+      setMaxPagesCharacters(data.data.data.info.pages)
+      console.log(maxPagesCharacters)
     }
     GetInfoCharacter(pageCharacters)
   }, [pageCharacters])
 
   function increment() {
-    setPageCharacters((prevCounter: number ) => {
-      return prevCounter + 1
-    })
+    if(pageCharacters < maxPagesCharacters){
+      setPageCharacters((prevCounter: number ) => {
+        return prevCounter + 1
+      })
+    }
   }
 
   function decrement() {
-    setPageCharacters((prevCounter: number ) => {
-      return prevCounter - 1
-    })
+    if(pageCharacters > 1)
+    {
+      setPageCharacters((prevCounter: number ) => {
+        return prevCounter - 1
+      })
+    }
   }
+
 
   
   return (
     <HomePage>
-      <HeaderHomePage>
-        <HeaderTitleHomePage>
-          <TitleHomePage>
-            Rick And Morti Web
-          </TitleHomePage>
-        </HeaderTitleHomePage>
-        <Image src={logo}
-            width={60}
-            height={60} 
-        />
-      </HeaderHomePage>
         <ShowCasesCharacters>
           {Characters.map((item: any) => (
           <BlockInfoCharacter>
@@ -65,29 +61,33 @@ export default function Home() {
              <img src = {item.image}
                 width={225}
                 height={225}
+                style = {{borderRadius: "10px"}}
               />
             </ImageCharacterInBlock>
             <InfoCharacterInBlock>
-              <NameCharacterInBlock>
-                {JSON.stringify(item.name)}
-              </NameCharacterInBlock>
-              <StatusCharacterInBlock>
-                {JSON.stringify(item.status)}
-              </StatusCharacterInBlock>
-              <SpeciesCharacterInBlock>
-                {JSON.stringify(item.species)}
-              </SpeciesCharacterInBlock>
+              <NameAndStatusCharacterInBlock>
+                {item.name} : {item.status}
+              </NameAndStatusCharacterInBlock>
+              <SpeciesAndTypeCharacterInBlock>
+                {item.species} : 
+                {item.type}
+              </SpeciesAndTypeCharacterInBlock>
             </InfoCharacterInBlock>
           </BlockInfoCharacter>
           ))}
         </ShowCasesCharacters>
       <Wrapper>
-        <Button onClick={decrement}> Пред страница </Button>
-        <Button> {pageCharacters} </Button>
-        <Button onClick={increment}> След страница </Button>
+        <Button onClick={decrement} style = {{visibility: pageCharacters === 1 ? 'hidden' : 'visible'}}> Пред страница </Button>
+        <NumOfCurrentPage> Текущая страница: {pageCharacters} </NumOfCurrentPage>
+        <Button onClick={increment} style = {{visibility: pageCharacters === 42 ? 'hidden' : 'visible'}}> След страница </Button>
       </Wrapper>
+      <Pagination>
+        <ButtonPagination>
+          1
+        </ButtonPagination>
+      </Pagination>
     </HomePage>
   )
 }
 
-//{JSON.stringify(item)}
+//{maxPagesCharacters.map(() => ())}
