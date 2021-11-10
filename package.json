@@ -1,10 +1,13 @@
 {
   "name": "rikandmortiweb",
+  "version": "0.1.0",
   "private": true,
+  "homepage": "/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
+    "heroku-postbuild": "npm run build",
     "lint": "next lint"
   },
   "dependencies": {
@@ -25,9 +28,5 @@
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.2",
     "typescript": "4.4.4"
-  },
-  "engines": {
-    "node" : "16.13.0",
-    "npm" : "8.1.0"
   }
 }
