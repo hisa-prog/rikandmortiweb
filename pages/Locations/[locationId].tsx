@@ -20,6 +20,9 @@ export default function Location({locationId, residents, location} : any) {
     const goToCharacters = () => {
         router.push(`/`)
       }
+    const goToCharacterPage = (characterId : string) => {
+        router.push(`/Character/${characterId}`)
+      }  
 //на название блоков не смотрите) Устал создавать новые и просто использовал с блоков от эпизодов
  return (
         <PageOfEpisode> 
@@ -45,7 +48,7 @@ export default function Location({locationId, residents, location} : any) {
                 residents in this episode  :
             </EpisodeBlock>
                 {residents.map((item: any) => (
-                    <NameCharacterInBlock >
+                    <NameCharacterInBlock onClick={ () => goToCharacterPage(item.id) }>
                         {item.name}
                     </NameCharacterInBlock>
                 ))}                

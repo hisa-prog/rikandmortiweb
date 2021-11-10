@@ -58,7 +58,21 @@ export default function Home() {
   const goToLocation = (locationId : string) => {
     router.push(`/Locations/${locationId}`)
   }
-  
+
+  const TakeLocationId = ($LocationUrl : string) => {
+    if ($LocationUrl === '') {
+      alert('Location not found ');
+    }
+    else{
+      let $newsString = $LocationUrl.substr($LocationUrl.lastIndexOf('/') + 1);
+    goToLocation($newsString)
+    }
+  }
+
+  const goToCharacter = (characterId : string) => {
+    router.push(`/Character/${characterId}`)
+  }
+
 
   return (
     <HomePage>
@@ -73,7 +87,7 @@ export default function Home() {
               />
             </ImageCharacterInBlock>
             <InfoCharacterInBlock>
-              <NameCharacterInBlock>
+              <NameCharacterInBlock onClick={ () => goToCharacter(item.id) }>
                 {item.name}
               </NameCharacterInBlock>
               <RowWithStatusAndSpeciesCharacterInBlock>
@@ -85,11 +99,11 @@ export default function Home() {
               </RowWithStatusAndSpeciesCharacterInBlock>
               <InformationOfLocationAnsEpisodeCharacterInBlock>
                 Origin location:
-                <OriginAndLocationCharacterInBlock onClick={ () => goToLocation(item.id) }>
+                <OriginAndLocationCharacterInBlock onClick={ () => TakeLocationId(item.origin.url) }>
                   {item.origin.name}
                 </OriginAndLocationCharacterInBlock>
                 First seen in:
-                <OriginAndLocationCharacterInBlock onClick={ () => goToLocation(item.id) }>
+                <OriginAndLocationCharacterInBlock onClick={ () => TakeLocationId(item.location.url) }>
                   {item.location.name}
                 </OriginAndLocationCharacterInBlock>
               </InformationOfLocationAnsEpisodeCharacterInBlock>

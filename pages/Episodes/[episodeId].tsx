@@ -20,6 +20,9 @@ export default function Episode({episodeId, characters, episode} : any) {
     const goToCharacters = () => {
         router.push(`/`)
       }
+    const goToCharacterPage = (characterId : string) => {
+        router.push(`/Character/${characterId}`)
+      }
 
  return (
         <PageOfEpisode>
@@ -45,7 +48,7 @@ export default function Episode({episodeId, characters, episode} : any) {
                 Characters in this episode  :
             </EpisodeBlock>
                 {characters.map((item: any) => (
-                    <NameCharacterInBlock >
+                    <NameCharacterInBlock onClick={ () => goToCharacterPage(item.id) } >
                         {item.name}
                     </NameCharacterInBlock>
                 ))}                
@@ -70,7 +73,7 @@ export async function getServerSideProps(ctx : any) {
         characters = i === episode.characters.length - 1 ? characters + tmp : characters + tmp + ','
     } 
     characters = (await axios.get(`https://rickandmortyapi.com/api/character/${characters}`)).data
-
+    console.log(characters)
     return {
       props: {episodeId, characters, episode}, 
     }

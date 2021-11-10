@@ -103,6 +103,10 @@ export const NameCharacterInBlock = styled.h2`
     margin-left: 10px;
     word-break: break-all;
     color: white;
+
+    &:hover {
+      text-decoration: underline;
+    }
 `
 
 export const RowWithStatusAndSpeciesCharacterInBlock = styled.div`
@@ -137,7 +141,11 @@ export const InformationOfLocationAnsEpisodeCharacterInBlock = styled.h4`
 export const OriginAndLocationCharacterInBlock = styled.h3`
     margin: 0;
     word-break: break-all;
-    color: white; 
+    color: white;
+    
+    &:hover {
+      text-decoration: underline;
+    }
 `
 
 export const Button = styled.button`
@@ -354,4 +362,75 @@ export const LocationBlock = styled.h2`
   margin: 0;
   word-break: break-all;
   color: gray; 
+`
+
+export const PageOfCharacter = styled.div`
+  min-height: 100vh;
+  min-width: 100vw;  
+  background-color: rgb(36, 40, 47);
+`
+
+export const ShowInformationAboutCharacter = styled.div`
+  min-height: 100vh;
+  min-width: 100vw;
+  white-space: nowrap;
+`
+
+export const CharacterBlock = styled.h2`
+  margin: 0;
+  word-break: break-all;
+  color: gray; 
+`
+
+export const ShowImageAndOtherAboutCharacter = styled.div`
+  height: 300px;
+  min-width: 100vw;
+  display: flex;
+  white-space: nowrap;
+`
+
+export const InfoAboutCharacter = styled.h3`
+  margin-bottom: 5px;
+  word-break: break-all;
+  margin: 0;
+  font-size: 20px;
+  color: white;
+`
+
+export const ShowEpisodesOfCharacter = styled.div`
+  height: 20px;
+  width: 20px;
+`
+
+export const StatusCharacterInPage = styled.div`
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+`
+
+export const EpisodesCharacterPage = styled.h2`
+    word-break: break-all;
+    color: white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+`
+
+export const OriginLocationCharacterOnPage = styled.h2`
+  margin: 0;
+  word-break: break-all;
+  color: white;
+  &:hover {
+      text-decoration: underline;
+    }
+`
+
+export const LastLocationCharacterOnPage = styled.h2`
+  margin: 0;
+  word-break: break-all;
+  color: white;
+  &:hover {
+      text-decoration: underline;
+    }
 `
