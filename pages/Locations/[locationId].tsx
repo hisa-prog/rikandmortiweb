@@ -21,7 +21,8 @@ export default function Location({locationId, residents, location} : any) {
         router.push(`/`)
       }
     const goToCharacterPage = (characterId : string) => {
-        router.push(`/Character/${characterId}`)
+        if (characterId === undefined) alert('No such character exists ')
+        else router.push(`/Character/${characterId}`)
       }  
 //на название блоков не смотрите) Устал создавать новые и просто использовал с блоков от эпизодов
  return (
@@ -74,6 +75,7 @@ export async function getServerSideProps(ctx : any) {
     } 
     residents = (await axios.get(`https://rickandmortyapi.com/api/character/${residents}`)).data
     residents = location.residents.length === 1 ? [{...residents as any}] : residents
+    residents = location.residents.length === 0 ? [{name : 'unknown'}] : residents
 
     return {
       props: {locationId, residents, location}, 

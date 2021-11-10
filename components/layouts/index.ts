@@ -43,22 +43,24 @@ export const Wrapper = styled.div`
 
 export const Pagination = styled.div`
     height: 100px;   
-    display: grid;
-    grid-column-gap: 15px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     overflow: hidden;
 `
 
 export const ButtonPagination = styled.button`
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     background-color: rgb(47, 50, 56);
     color: white;
     text-align: center;
-    margin: 20px auto;
     font: normal 17px arial;
     border-radius: 50%;
     box-shadow: 0 0 10px #444;
+
+    & + & {
+      margin-left: 15px;
+    }
 `
 
 export const ShowCasesCharacters = styled.div`
