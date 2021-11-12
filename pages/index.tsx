@@ -41,7 +41,6 @@ export default function Home() {
       let data = await axios.post("/api/GetInfoCharacters", { Page: value });
       setCharacters(data.data.data.results);
       setMaxPagesCharacters(data.data.data.info.pages);
-      console.log(maxPagesCharacters);
     }
     GetInfoCharacter(pageCharacters);
   }, [pageCharacters]);
