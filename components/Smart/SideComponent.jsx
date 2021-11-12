@@ -6,7 +6,7 @@ import { useContext } from "react"
 import { useRouter } from 'next/router'
 import SideBarContext from "../context/sidebarContext"
 
-export default function Sidebar() {
+export default function SideComponent() {
     const router = useRouter()
     const { sidebar, setSidebar } = useContext(SideBarContext)
   

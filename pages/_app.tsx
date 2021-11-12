@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { HomePage } from '../components/layouts'
 import Header from '../components/Smart/Header'
-import Sidebar from '../components/Smart/Sidebar'
+import SideComponent from '../components/Smart/SideComponent'
 import SideBarContext from "../components/context/sidebarContext"
 import React from 'react'
 import { useState } from 'react'
@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SideBarContext.Provider value={{ sidebar, setSidebar }}>
     <HomePage className = {sidebar ? 'sidebar' : ''}>
-      <Sidebar />
+      <SideComponent />
       <Header />
       <Component {...pageProps} base="/index" />
     </HomePage>
