@@ -84,7 +84,7 @@ export default function Home() {
       <ShowCasesCharacters>
         {Characters.map((item: any) => (
           <BlockInfoCharacter>
-            <ImageCharacterInBlock>
+            <ImageCharacterInBlock onClick={() => goToCharacter(item.id)}>
               <img
                 src={item.image}
                 width={220}

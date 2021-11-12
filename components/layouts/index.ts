@@ -87,6 +87,10 @@ export const ImageCharacterInBlock = styled.div`
     height: 220px;
     width: 220px;
     border-radius: 10px;
+
+    &:hover {
+      box-shadow: 0 0 20px orange;
+    }
 `
 
 export const InfoCharacterInBlock = styled.div`
