@@ -59,10 +59,10 @@ export default function Character({characterId, episodes, character} : any) {
                                 {character.status} - {character.species}
                             </CharacterBlock>
                         </RowWithStatusAndSpeciesCharacterInBlock>
-                        <OriginLocationCharacterOnPage onClick={ () => TakeLocationId(character.origin.url)} style={{color: 'white', fontSize: '25px', marginLeft: '37px', marginTop: '8px'}}>
+                        <OriginLocationCharacterOnPage onClick={ () => TakeLocationId(character.origin.url)} style={{fontSize: '25px', marginLeft: '37px', marginTop: '8px'}}>
                             Origin location - {character.origin.name}
                         </OriginLocationCharacterOnPage>
-                        <LastLocationCharacterOnPage onClick={ () => TakeLocationId(character.location.url)} style={{color: 'white', fontSize: '25px', marginLeft: '15px'}}>
+                        <LastLocationCharacterOnPage onClick={ () => TakeLocationId(character.location.url)} style={{fontSize: '25px', marginLeft: '15px'}}>
                             First seen in - {character.location.name}
                         </LastLocationCharacterOnPage>
                         <CharacterBlock style={{color: 'white', fontSize: '25px', visibility: character.gender === 'unknown' ? 'hidden' : 'visible'}}>
@@ -75,7 +75,7 @@ export default function Character({characterId, episodes, character} : any) {
                 </CharacterBlock>
                 <ShowEpisodesOfCharacter style={{display: 'grid', gridTemplateColumns: 'repeat(11, 1fr)', gridColumnGap: '20px', paddingLeft: '10px'}}>
                 {episodes.map((item: any) => (
-                    <EpisodesCharacterPage onClick={ () => goToEpisode(item.id) } style={{color: 'white'}}>
+                    <EpisodesCharacterPage onClick={ () => goToEpisode(item.id)}>
                         {item.episode}
                     </EpisodesCharacterPage>
                 ))}
