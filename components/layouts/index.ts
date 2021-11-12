@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const HomePage = styled.div`
     min-height: 100vh;
-    min-width: 100vw;
+    min-width: 80vw;
     background-color: rgb(36, 40, 47);
 `
 
