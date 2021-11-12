@@ -108,6 +108,8 @@ export const NameCharacterInBlock = styled.h2`
 
     &:hover {
       text-decoration: underline;
+      cursor: pointer;
+      color: orange;
     }
 `
 
@@ -147,6 +149,8 @@ export const OriginAndLocationCharacterInBlock = styled.h3`
     
     &:hover {
       text-decoration: underline;
+      cursor: pointer;
+      color: orange;
     }
 `
 
@@ -416,6 +420,8 @@ export const EpisodesCharacterPage = styled.h2`
 
     &:hover {
       text-decoration: underline;
+      cursor: pointer;
+      color: orange;
     }
 `
 
@@ -425,6 +431,8 @@ export const OriginLocationCharacterOnPage = styled.h2`
   color: white;
   &:hover {
       text-decoration: underline;
+      cursor: pointer;
+      color: orange;
     }
 `
 
@@ -434,5 +442,7 @@ export const LastLocationCharacterOnPage = styled.h2`
   color: white;
   &:hover {
       text-decoration: underline;
+      cursor: pointer;
+      color: orange;
     }
 `
