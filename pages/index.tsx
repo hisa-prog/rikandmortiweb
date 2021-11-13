@@ -28,13 +28,12 @@ export default function Home() {
   const [pageNumbers, setPageNumbers] = useState([]);
 
   useEffect(() => {
-    const tmp : any = []
-    for (let i = 1; i <= maxPagesCharacters; i++)
-    {
-      tmp.push(i)
+    const tmp: any = [];
+    for (let i = 1; i <= maxPagesCharacters; i++) {
+      tmp.push(i);
     }
-    setPageNumbers(tmp)
-  }, [])
+    setPageNumbers(tmp);
+  }, []);
 
   useEffect(() => {
     async function GetInfoCharacter(value: number) {
@@ -77,6 +76,59 @@ export default function Home() {
   const goToCharacter = (characterId: string) => {
     router.push(`/Character/${characterId}`);
   };
+
+  const goToPage = async (item: number) => {
+    let data = await axios.post("/api/GetInfoCharacters", { Page: item });
+    setPageCharacters(item)
+    setCharacters(data.data.data.results);
+    setMaxPagesCharacters(data.data.data.info.pages);
+  }
+
+  function renderPagination(){
+    if(pageCharacters < 4){
+      const tmp = []
+      for(let i = 2; i < 5; i++){
+        tmp.push(i)
+      }
+
+      return(
+        <div>
+          {tmp.map((item) => (
+            <ButtonPagination onClick={() => goToPage(item)}>{item}</ButtonPagination>
+          ))}
+        </div>
+      )
+    }
+    if(pageCharacters >= 4 && pageCharacters < maxPagesCharacters - 4){
+      const tmp = []
+      for(let i = pageCharacters - 2; i < pageCharacters + 3; i++){
+        tmp.push(i)
+      }
+
+      return(
+        <div>
+          {tmp.map((item) => (
+            <ButtonPagination onClick={() => goToPage(item)}>{item}</ButtonPagination>
+          ))}
+        </div>
+      )
+    }
+
+    if(pageCharacters >= maxPagesCharacters -4){
+      const tmp = []
+      for(let i = maxPagesCharacters -4; i < maxPagesCharacters; i++){
+        tmp.push(i)
+      }
+
+      return(
+        <div>
+          {tmp.map((item) => (
+            <ButtonPagination onClick={() => goToPage(item)}>{item}</ButtonPagination>
+          ))}
+        </div>
+      )
+    }
+  }
 
   return (
     <HomePage>
@@ -135,21 +187,21 @@ export default function Home() {
         >
           Пред страница
         </Button>
-        <NumOfCurrentPage>
-          Текущая страница: {pageCharacters}
-        </NumOfCurrentPage>
+        <NumOfCurrentPage>Текущая страница: {pageCharacters}</NumOfCurrentPage>
         <Button
           onClick={increment}
-          style={{ visibility: pageCharacters === maxPagesCharacters ? "hidden" : "visible" }}
+          style={{
+            visibility:
+              pageCharacters === maxPagesCharacters ? "hidden" : "visible",
+          }}
         >
           След страница
         </Button>
       </Wrapper>
-      <Pagination >
-        {/* <ButtonPagination>1</ButtonPagination>
-        {pageNumbers.map((item : any) => (
-        ))}
-        <ButtonPagination>{maxPagesCharacters}</ButtonPagination> */}
+      <Pagination>
+        <ButtonPagination onClick={() => goToPage(1)}>1</ButtonPagination>
+        {renderPagination()}
+        <ButtonPagination onClick={() => goToPage(maxPagesCharacters)}>{maxPagesCharacters}</ButtonPagination>
       </Pagination>
     </HomePage>
   );
